@@ -1,2 +1,4 @@
 # CPT212-Ass2-Boyer-Moore-Algorithm
-Boyer Moore
+
+## Group Members
+1. Lim Yi Jie
