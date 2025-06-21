@@ -7,18 +7,17 @@ def build_bad_char_table(pattern):
         char = pattern[i]
         bad_char[ord(char)] = i  # Record the last position of each character in the pattern
     return bad_char
-    
-def print_bad_char_shifts(bad_char, pattern):
+
+def print_bad_char_table(bad_char, pattern):
     m = len(pattern)
     unique_chars = sorted(set(pattern))  # Display each unique character in the pattern
     
-    print("Bad Character Shifts:")
+    print("Bad Character Table:")
     for c in unique_chars:
         # Calculate shift using max(1, m - last_pos - 1)
         last_pos = bad_char[ord(c)]
-        shift = max(1, m - last_pos - 1 if last_pos != -1 else m)
-        print(f"'{c}': shift {shift}")
-    print(f"*: shift {m}")  # For wildcard (any other character not in pattern)
+        print(f"'{c}': Last Position at {last_pos}")
+    print(f"*: Last position at -1")  # For wildcard (any other character not in pattern)
     print("-" * 40)
 
 
@@ -62,7 +61,7 @@ def boyer_moore_search(text, pattern):
 
     # Bad character heuristic preprocessing
     bad_char = build_bad_char_table(pattern)
-    print_bad_char_shifts(bad_char, pattern)
+    print_bad_char_table(bad_char, pattern)
 
     # Good suffix heuristic preprocessing
     bpos = [0] * (m + 1)
